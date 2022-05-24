@@ -18,14 +18,6 @@ public class ProductService {
           }
           return null;
 }
-      public List<Product> search2(String key){
-    	  try (Connection con = DbUtil.getConnection()) {
-    		  ProductDao pd = new ProductDao(con);
-    		  return pd.fintdByProductKey2(key);
-    	  } catch (Exception e) {
-    		  e.printStackTrace();
-    	  }
-    	  return null;
-      }
+
 
 }

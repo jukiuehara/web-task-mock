@@ -12,7 +12,7 @@
   <div class="header">
     <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
     <div class="user">
-      <p class="user_name">佐藤さん、こんにちは</p>
+      <p class="user_name">${User.getName()}</p>
       <form class="logout_form" action="logout.html" method="get">
         <button class="logout_btn" type="submit">
           <img src="images/ドアアイコン.png">ログアウト</button>
@@ -70,8 +70,8 @@
           </div>
         </fieldset>
         <div class="btns">
-          <button type="button" onclick="openModal()" class="basic_btn">登録</button>
-          <input type="button" onclick="location.href='./menu.html'" value="戻る" class="cancel_btn">
+          <button type="button" onclick="openModal()" class="basic_btn" >登録</button>
+          <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
         </div>
         <div id="modal">
           <p class="modal_message">登録しますか？</p>

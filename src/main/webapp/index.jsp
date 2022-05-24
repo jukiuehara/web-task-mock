@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,6 @@
   <div class="header">
     <h1 class="site_logo">商品管理システム</h1>
   </div>
-
   <div class="login_form">
     <img src="./images/logo.png" class="login_logo">
     <p class="error">${msg}</p>

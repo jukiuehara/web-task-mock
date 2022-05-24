@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entity.Product;
 import entity.User;
+import service.ProductService;
 import service.UserService;
 
 /**
@@ -52,6 +55,10 @@ public class indexservlet extends HttpServlet {
 		if(null!=user) {
 		session.setAttribute("User", user);
 		session.setAttribute("Username", user.getName());
+		
+		ProductService ps = new ProductService();
+		List<Product> product = (List<Product>) ps.search("");
+		session.setAttribute("product", product);
 		
 		request.getRequestDispatcher("menu.jsp").forward(request, response);	
 		}else if(null==us.login(id,pass)) {

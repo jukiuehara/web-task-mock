@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
       <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
       <div class="user">
         <p class="user_name"><%=user %>さん、こんにちは</p>
-        <form class="logout_form" action="logout.html" method="get">
+        <form class="logout_form" action="LogoutServlet" method="post">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
         </form>
@@ -29,7 +29,7 @@
 
     <hr>
 
-    <div class="btn"><a class="basic_btn regist" href="insert.html">新規登録</a></div>
+    <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
     <p>成功メッセージ</p>
     <form method="get" action="menuServlet" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
@@ -66,7 +66,7 @@
             <td>${ product.getName() }</td>
             <td>${ product.getPrice() }</td>
             <td>${ product.getCategory() }</td>
-            <td><a class="detail_btn" href="./detail.html">詳細</a></td>
+            <td><a class="detail_btn" href="./detail.jsp">詳細</a></td>
           </tr>        
 
         </c:forEach> 
