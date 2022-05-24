@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +12,14 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+<%String user = (String)session.getAttribute("Username");  %>
+
   <div id="app">
 
     <div class="header">
       <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
       <div class="user">
-        <p class="user_name">佐藤さん、こんにちは</p>
+        <p class="user_name"><%=user %>さん、こんにちは</p>
         <form class="logout_form" action="logout.html" method="get">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
@@ -26,13 +31,13 @@
 
     <div class="btn"><a class="basic_btn regist" href="insert.html">新規登録</a></div>
     <p>成功メッセージ</p>
-    <form method="get" action="#" class="search_container">
-      <input type="text" size="25" placeholder="キーワード検索">
+    <form method="get" action="menuServlet" class="search_container">
+      <input type="text" size="25" placeholder="キーワード検索" name="key">
       <input type="submit" value="&#xf002">
     </form>
 
     <table>
-        <div class="caption"><p>検索結果：10件</p></div>
+        <div class="caption"><p>検索結果：10件${a}</p></div>
         <div class="order">
           <select class="base-text">
             <option>並び替え</option>
@@ -54,17 +59,27 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="product in products">
+        <template v-for="product in products">      
+          <c:forEach var="product" items="${product}">      
           <tr>
-            <td>{{ product.ID }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.category }}</td>
+            <td>${ product.getProduct_id() }</td>
+            <td>${ product.getName() }</td>
+            <td>${ product.getPrice() }</td>
+            <td>${ product.getCategory() }</td>
             <td><a class="detail_btn" href="./detail.html">詳細</a></td>
-          </tr>
-        </template>
+          </tr>        
+
+        </c:forEach> 
+        </template>        
+
+        
+
       </tbody>
     </table>
+    
+
+
+    
   </div>
   <footer></footer>
 
@@ -79,61 +94,7 @@
             name: "マッキー(黒)",
             price: 160,
             category: "筆記具",
-          },
-          {
-            ID: "10002",
-            name: "電卓",
-            price: 935,
-            category: "オフィス機器",
-          },
-          {
-            ID: "10003",
-            name: "ホッチキス芯",
-            price: 220,
-            category: "事務消耗品",
-          },
-          {
-            ID: "10004",
-            name: "Campus(5冊組)",
-            price: 220,
-            category: "紙製品",
-          },
-          {
-            ID: "10005",
-            name: "地球儀",
-            price: 160,
-            category: "雑貨",
-          },
-          {
-            ID: "10006",
-            name: "ロジカルノート(5冊組)",
-            price: 386,
-            category: "紙製品",
-          },
-          {
-            ID: "10007",
-            name: "レジスター",
-            price: 130,
-            category: "オフィス用品",
-          },
-          {
-            ID: "10008",
-            name: "カドケシ",
-            price: 150,
-            category: "筆記具",
-          },
-          {
-            ID: "10009",
-            name: "アラビックヤマト",
-            price: 200,
-            category: "事務用品",
-          },
-          {
-            ID: "10010",
-            name: "粘土",
-            price: 160,
-            category: "雑貨",
-          },
+          }
         ]
       }
     })

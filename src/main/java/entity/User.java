@@ -1,21 +1,30 @@
 package entity;
 
-public class User{
+public class User {
 	private String login_id;
 	private String password;
 	private String name;
+	private int role;
 
 	public User() {
-		
+
 	}
-	
-	public User(String login_id,String password,String name) {
+
+	public User(String login_id, String password, String name,int role) {
 		this.login_id = login_id;
 		this.name = name;
 		this.password = password;
+		this.role = role;
 
 	}
 
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
+	}
 
 	public String getLogin_id() {
 		return login_id;
