@@ -30,7 +30,7 @@
     </div>
   
     <div class="form_body">
-      <p class="error">${msg}</p>
+      <p class="error">エラーメッセージ</p>
   
       <form action="InsertServlet" method="post">
         <fieldset class="label-130">
@@ -73,7 +73,7 @@
           <button type="button" onclick="openModal()" class="basic_btn" >登録</button>
           <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
         </div>
-        
+              </form>
         <div id="modal">
           <p class="modal_message">登録しますか？</p>
           <div class="btns">
@@ -82,13 +82,10 @@
           </div>
           
         </div>
-      </form>
+
     </div>
   </div>
   <div id="fadeLayer"></div>
 </body>
 </html>
-<script src="./js/commons.js">
-
-
-</script>
+<script src="./js/commons.js"></script>

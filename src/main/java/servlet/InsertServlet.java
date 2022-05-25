@@ -1,11 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import service.ProductService;
 
 /**
  * Servlet implementation class InsertServlet
@@ -35,6 +38,47 @@ public class InsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("loginId");
+		String name = request.getParameter("userName");
+		String price = request.getParameter("tel");
+		String categoryid = request.getParameter("roleId");
+		String des = request.getParameter("description");
+		
+		String msgid =null;
+		String msgname =null;
+		String msgprice =null;
+		
+		if(id.equals("")) {
+		msgid = "商品IDは入力必須項目です";
+		request.setAttribute("msgid",msgid);
+		}
+		if(name.equals("")) {
+		msgname = "名前は入力必須項目です";
+			request.setAttribute("msgname",msgname);
+		}
+		if(price.equals("")) {
+		msgprice = "単価は入力必須項目です";
+			request.setAttribute("msgprice",msgprice);
+		}
+		
+		if(msgid.equals(null)||msgname.equals(null)||msgprice.equals(null)) {
+		request.getRequestDispatcher("insert.jsp").forward(request, response);			
+		}else {
+			
+			int productId = Integer.parseInt(id);
+			int tel = Integer.parseInt(price);
+			int categorynumber = Integer.parseInt(categoryid);
+			
+			ProductService ps = new ProductService();
+			ps.insert(productId, tel, name, categorynumber, des);
+			String msg = "登録が完了しました";
+			request.setAttribute("msg",msg);
+			request.getRequestDispatcher("insert.jsp").forward(request, response);
+		}
+		
+		
+		
 		doGet(request, response);
 	}
 
