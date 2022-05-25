@@ -39,11 +39,19 @@ public class menuServlet extends HttpServlet {
 		String key = request.getParameter("key");
 		ProductService ps = new ProductService();
 		List<Product> product = (List<Product>) ps.search(key);
+int count = 0;
+		for (Product i : product) {
+			System.out.print( i.getProduct_id());
+			count++;
+		}
 
 		session.setAttribute("product", product);
+		session.setAttribute("count", count);
 		request.getRequestDispatcher("menu.jsp").forward(request, response);
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**

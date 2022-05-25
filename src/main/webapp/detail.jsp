@@ -21,7 +21,8 @@
   </div>
 
   <hr>
-
+            <%String value = request.getParameter("name"); %>
+            <%=value %>
   <div class="update">
     <div class="form_body">
       <div class="img_block">
@@ -32,7 +33,7 @@
           <p class="error">エラーメッセージ</p>
           <div>
             <label>商品ID</label>
-            <input type="text" name="loginId" value="10001" readonly class="base-text">
+            <input type="text" name="loginId" value=" <%=value %>" readonly class="base-text">
           </div>
           <div>
             <label>商品名</label>
@@ -52,6 +53,7 @@
 ゼブラ株式会社
 線の太さ：太6.0mm、細1.5～2.0mm
             </textarea>
+
           </div>
         </fieldset>
         <div>

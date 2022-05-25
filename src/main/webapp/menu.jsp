@@ -35,9 +35,8 @@
       <input type="text" size="25" placeholder="キーワード検索" name="key">
       <input type="submit" value="&#xf002">
     </form>
-
     <table>
-        <div class="caption"><p>検索結果：10件${a}</p></div>
+        <div class="caption"><p>検索結果：${count}件</p></div>
         <div class="order">
           <select class="base-text">
             <option>並び替え</option>
@@ -58,7 +57,8 @@
           <th>詳細</th>
         </tr>
       </thead>
-      <tbody>
+
+      <tbody>        
         <template v-for="product in products">      
           <c:forEach var="product" items="${product}">      
           <tr>
@@ -66,7 +66,8 @@
             <td>${ product.getName() }</td>
             <td>${ product.getPrice() }</td>
             <td>${ product.getCategory() }</td>
-            <td><a class="detail_btn" href="./detail.jsp">詳細</a></td>
+            
+            <td><a class="detail_btn" href="./detail.jsp?name=${product.getProduct_id()} " >詳細</a></td>
           </tr>        
 
         </c:forEach> 
