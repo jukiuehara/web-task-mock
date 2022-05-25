@@ -36,7 +36,7 @@
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
-            <input type="text" name="loginId" class="base-text">
+            <input type="number" name="loginId" class="base-text">
             <span class="error">${msgid}</span>
           </div>
           <div>
@@ -46,7 +46,7 @@
           </div>
           <div>
             <label class="required">単価</label>
-            <input type="text" name="tel" class="base-text">
+            <input type="number" name="tel" class="base-text">
             <span class="error">${msgprice}</span>
           </div>
           <div class="select_block">
@@ -66,11 +66,11 @@
           <div>
             <label>画像</label>
             <input type="file" name="file">
-            <span class="error">エラーメッセージ</span>
+            <span class="error">  </span>
           </div>
         </fieldset>
         <div class="btns">
-          <button type="button" onclick="openModal()" class="basic_btn" >登録</button>
+          <button type="submit" onclick="openModal()" class="basic_btn" >登録</button>
           <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
         </div>
         
